@@ -4,12 +4,18 @@ import { Button } from '@material-ui/core'; //instal material UI core: npm insta
 import axios from 'axios' //install axios: npm install axios
 import CharacterCard from './CharacterCard' //install Icon dependencies: npm install @material-ui/icons
 
-export default function CharacterList({ isActive, handler }) {
+export default function CharacterList() {
 
     //Rick & Morty API: //https://rickandmortyapi.com/
 
     const [characterList, setCharacterList] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+
+    const [isActive, setIsActive] = useState(false)
+
+    const handleChangeBtn = () => {
+        setIsActive(!isActive)
+    }
 
     /* useEffect(() => {
 
@@ -70,7 +76,7 @@ export default function CharacterList({ isActive, handler }) {
                 isActive ? (
                     <Button 
                         color="secondary" 
-                        onClick={() => handler()}
+                        onClick={() => handleChangeBtn()}
                         variant="contained"
                         >
                             Show All
@@ -78,7 +84,7 @@ export default function CharacterList({ isActive, handler }) {
                 ) : (
                     <Button 
                         color="primary" 
-                        onClick={() => handler()}
+                        onClick={() => handleChangeBtn()}
                         variant="contained"
                         >
                             Filtering By "Alive"
