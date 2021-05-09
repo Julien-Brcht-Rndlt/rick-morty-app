@@ -68,13 +68,44 @@ export default function CharacterList({ isActive, handler }) {
         <div style={{display: 'flex', flexDirection: 'column', alignItems: 'space-between', justifyContent: 'center'}}>
             {
                 isActive ? (
-                    <Button color="secondary" onClick={() => handler()}>Clicked!</Button>
+                    <Button 
+                        color="secondary" 
+                        onClick={() => handler()}
+                        variant="contained"
+                        >
+                            Show All
+                    </Button>
                 ) : (
-                    <Button color="primary" onClick={() => handler()}>Click Me!</Button>
+                    <Button 
+                        color="primary" 
+                        onClick={() => handler()}
+                        variant="contained"
+                        >
+                            Filtering By "Alive"
+                    </Button>
                 )
             }
-}
+
             {
+                characterList.length > 0 && characterList !== 0 && (
+                    characterList.filter((character) => !isActive || character.status.toLowerCase() === 'Alive'.toLowerCase()).map((character) => {
+                        return(
+                                <CharacterCard 
+                                    key={character.id}
+                                    id={character.id}
+                                    name={character.name}
+                                    status={character.status}
+                                    species={character.species}
+                                    gender={character.gender}
+                                    image={character.image}
+                                />
+                        )
+                    })
+                )
+            }
+
+            {/* {
+                !isActive ? (
                 characterList.length > 0 && characterList !== 0 && (
                     characterList.map((character) => {
                         return(
@@ -90,7 +121,27 @@ export default function CharacterList({ isActive, handler }) {
                         )
                     })
                 )
-            }
+
+                ) : (
+
+                    characterList.length > 0 && characterList !== 0 && (
+                        characterList.filter((character) => character.status === 'Alive').map((character) => {
+                            return(
+                                    <CharacterCard 
+                                        key={character.id}
+                                        id={character.id}
+                                        name={character.name}
+                                        status={character.status}
+                                        species={character.species}
+                                        gender={character.gender}
+                                        image={character.image}
+                                    />
+                            )
+                        })
+                    )
+
+                )
+            } */}
 
 </div>
     )
