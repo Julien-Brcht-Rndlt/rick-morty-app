@@ -18,6 +18,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite'
 //import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
 import MoreVertIcon from '@material-ui/icons/MoreVert'
 import { Button } from '@material-ui/core'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CharacterCard({ id, name, status, species, gender, image}) {
+export default function CharacterCard({ id, name, status, species, gender, image, handleDeleteCard }) {
   const classes = useStyles();
 
   const [isFavorite, setIsFavorite] = useState(false)
@@ -96,6 +97,9 @@ export default function CharacterCard({ id, name, status, species, gender, image
           { !isFavorite ? <FavoriteBorderIcon /> : <FavoriteIcon /> }
         </IconButton>
         <Link to={`/characters/${id}`}><Button>show more</Button></Link>
+        <IconButton aria-label="add to favorites" onClick={() => handleDeleteCard(id)}>
+          <DeleteIcon/>
+        </IconButton>
        {/*  <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,

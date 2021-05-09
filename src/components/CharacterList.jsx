@@ -17,6 +17,12 @@ export default function CharacterList() {
         setIsActive(!isActive)
     }
 
+
+    const handleDeleteCard = (id) => {
+        const newCharacterList = characterList.filter((character) => character.id !==id)
+        setCharacterList(newCharacterList)
+    }
+
     /* useEffect(() => {
 
         axios.get('https://rickandmortyapi.com/api/character')
@@ -104,6 +110,7 @@ export default function CharacterList() {
                                     species={character.species}
                                     gender={character.gender}
                                     image={character.image}
+                                    handleDeleteCard={handleDeleteCard}
                                 />
                         )
                     })
