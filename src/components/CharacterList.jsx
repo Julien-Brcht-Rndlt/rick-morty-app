@@ -1,6 +1,6 @@
-import { useState, useEffect } from 'react';
-import CircularProgress from '@material-ui/core/CircularProgress';
-import { Button } from '@material-ui/core'; //instal material UI core: npm install @material-ui/core
+import { useState, useEffect } from 'react'
+import CircularProgress from '@material-ui/core/CircularProgress'
+import { Button } from '@material-ui/core' //instal material UI core: npm install @material-ui/core
 import axios from 'axios' //install axios: npm install axios
 import CharacterCard from './CharacterCard' //install Icon dependencies: npm install @material-ui/icons
 
