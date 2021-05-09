@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { makeStyles } from '@material-ui/core/styles';
 //import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -13,9 +14,10 @@ import Typography from '@material-ui/core/Typography';
 import { red } from '@material-ui/core/colors';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
+//import ShareIcon from '@material-ui/icons/Share';
 //import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
-import MoreVertIcon from '@material-ui/icons/MoreVert';
+import MoreVertIcon from '@material-ui/icons/MoreVert'
+import { Button } from '@material-ui/core'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -80,6 +82,12 @@ export default function CharacterCard({ id, name, status, species, gender, image
       />
       <CardContent>
         <Typography variant="body2" color="textSecondary" component="p">
+         {species}   
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
+         {status}
+        </Typography>
+        <Typography variant="body2" color="textSecondary" component="p">
          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Perspiciatis inventore sit praesentium, a, dicta enim corporis qui libero fuga aperiam nesciunt quo. Voluptates dolorum vitae perspiciatis est distinctio, beatae possimus.
         </Typography>
       </CardContent>
@@ -87,9 +95,7 @@ export default function CharacterCard({ id, name, status, species, gender, image
         <IconButton aria-label="add to favorites" onClick={() => handleAddToFav()}>
           { !isFavorite ? <FavoriteBorderIcon /> : <FavoriteIcon /> }
         </IconButton>
-        <IconButton aria-label="share">
-          <ShareIcon />
-        </IconButton>
+        <Link to={`/characters/${id}`}><Button>show more</Button></Link>
        {/*  <IconButton
           className={clsx(classes.expand, {
             [classes.expandOpen]: expanded,
@@ -100,8 +106,6 @@ export default function CharacterCard({ id, name, status, species, gender, image
         >
           <ExpandMoreIcon />
         </IconButton> */}
-        <span>{species}</span>
-        <span>{status}</span>
       </CardActions>
       {/* image subsidiaire */}
       {/* <Collapse in={expanded} timeout="auto" unmountOnExit>
